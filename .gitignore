@@ -1,0 +1,7 @@
+classes/*
+target/*
+figwheel_server.log
+out/*
+.*
+!.gitignore
+
