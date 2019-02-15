@@ -42,12 +42,11 @@
 
 (load-file "project.clj")
 (p/ensure-dynamic-classloader)
-(def project (p/init-project project))
 
 (defmethod task "uberjar"
   [_]
   (task ["build-cljs"])
-  (uberjar project))
+  (-> project p/init-project uberjar))
 
 ;; entry point
 
