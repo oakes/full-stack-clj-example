@@ -40,13 +40,14 @@
   '[leiningen.core.project :as p :refer [defproject]]
   '[leiningen.uberjar :refer [uberjar]])
 
-(load-file "project.clj")
-(p/ensure-dynamic-classloader)
+(defn read-project-clj []
+  (p/ensure-dynamic-classloader)
+  (-> "project.clj" load-file var-get))
 
 (defmethod task "uberjar"
   [_]
   (task ["build-cljs"])
-  (-> project p/init-project uberjar))
+  (-> (read-project-clj) p/init-project uberjar))
 
 ;; entry point
 
