@@ -1,6 +1,6 @@
 (require
   '[cljs.build.api :as api]
-  '[figwheel-sidecar.repl-api :as repl-api]
+  '[figwheel.main :as figwheel]
   '[full-stack-clj-example.core :refer [dev-main]]
   '[clojure.java.io :as io]
   '[clojure.edn :as edn]
@@ -17,25 +17,16 @@
 
 (defmethod task "run"
   [_]
-  (future (task ["run-cljs"]))
-  (task ["run-clj"]))
+  (task ["run-clj"])
+  (task ["run-cljs"]))
 
 (defmethod task "run-clj"
   [_]
   (dev-main))
 
-(def cljs-config {:main          'full-stack-clj-example.core
-                  :optimizations :none
-                  :output-to     "target/public/main.js"
-                  :output-dir    "target/public/main"
-                  :asset-path    "/main"})
-
 (defmethod task "run-cljs"
   [_]
-  (repl-api/start-figwheel! {:all-builds [{:id "dev"
-                                           :figwheel true
-                                           :source-paths ["src"]
-                                           :compiler cljs-config}]}))
+  (figwheel/-main "--build" "dev"))
 
 (defmethod task "build-cljs"
   [_]
