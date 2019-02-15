@@ -1,7 +1,6 @@
 (require
   '[cljs.build.api :as api]
   '[figwheel-sidecar.repl-api :as repl-api]
-  '[nightlight.core :as nightlight]
   '[full-stack-clj-example.core :refer [dev-main]]
   '[clojure.java.io :as io]
   '[clojure.edn :as edn]
@@ -19,8 +18,7 @@
 (defmethod task "run"
   [_]
   (future (task ["run-cljs"]))
-  (task ["run-clj"])
-  (nightlight/-main "--port" "4000"))
+  (task ["run-clj"]))
 
 (defmethod task "run-clj"
   [_]
@@ -39,18 +37,28 @@
                                            :source-paths ["src"]
                                            :compiler cljs-config}]}))
 
-(defn delete-children-recursively! [f]
-  (when (.isDirectory f)
-    (doseq [f2 (.listFiles f)]
-      (delete-children-recursively! f2)))
-  (when (.exists f) (io/delete-file f)))
-
 (defmethod task "build-cljs"
   [_]
-  (delete-children-recursively! (io/file "out"))
   (api/build "src" {:main          'full-stack-clj-example.core
                     :optimizations :advanced
                     :output-to     "resources/public/main.js"}))
+
+;; tasks that use leiningen
+
+(require
+  '[leiningen.core.project :as p :refer [defproject]]
+  '[leiningen.uberjar :refer [uberjar]])
+
+(load-file "project.clj")
+(p/ensure-dynamic-classloader)
+(def project (p/init-project project))
+
+(defmethod task "uberjar"
+  [_]
+  (task ["build-cljs"])
+  (uberjar project))
+
+;; entry point
 
 (task *command-line-args*)
 

@@ -1,7 +1,8 @@
 {:paths ["src/clj" "src/cljc" "src/cljs" "resources"]
- :deps {org.clojure/clojure {:mvn/version "1.9.0"}
-        ring {:mvn/version "1.5.1"}
-        figwheel-sidecar {:mvn/version "0.5.16"}
-        org.clojure/clojurescript {:mvn/version "1.10.312"}
-        reagent {:mvn/version "0.7.0"}
-        nightlight {:mvn/version "RELEASE"}}}
+ :deps {ring {:mvn/version "1.7.1"}}
+ :aliases {:dev {:extra-deps {leiningen {:mvn/version "2.9.0"}
+                              lein-tools-deps {:mvn/version "0.4.3"
+                                               :exclusions [com.google.inject/guice$no_aop]}
+                              org.clojure/clojurescript {:mvn/version "1.10.520"}
+                              reagent {:mvn/version "0.8.1"}
+                              figwheel-sidecar {:mvn/version "0.5.16"}}}}}
