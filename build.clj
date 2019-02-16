@@ -32,7 +32,8 @@
   [_]
   (api/build "src" {:main          'full-stack-clj-example.core
                     :optimizations :advanced
-                    :output-to     "resources/public/main.js"}))
+                    :output-to     "resources/public/main.js"
+                    :output-dir    "target/public/main.out"}))
 
 ;; tasks that use leiningen
 
