@@ -12,6 +12,6 @@ The uberjar command works by programmatically using Leiningen. It works even if 
 ## Contents
 
 * `resources` The assets
-* `src/clj` The server-side code
-* `src/cljc` The client and server agnostic code
-* `src/cljs` The client-side code
+* `src/full_stack_clj_example/core.clj` The server-side code
+* `src/full_stack_clj_example/core.cljs` The client-side code
+* `src/full_stack_clj_example/utils.cljc` The client and server agnostic code
