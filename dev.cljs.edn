@@ -1,4 +1,4 @@
 {:main          full-stack-clj-example.core
  :optimizations :none
- :output-to     "target/public/main.js"
+ :output-to     "target-js/public/main.js"
  :output-dir    "target/public/main"}
