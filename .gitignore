@@ -1,6 +1,6 @@
 classes/*
 target/*
-resources/public/*.js
+target-cljs/*
 figwheel_server.log
 .*
 !.gitignore

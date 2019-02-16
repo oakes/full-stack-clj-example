@@ -10,7 +10,7 @@
 (println "Building main.js")
 (api/build "src" {:main          'full-stack-clj-example.core
                   :optimizations :advanced
-                  :output-to     "resources/public/main.js"
-                  :output-dir    "target/public/main.out"})
+                  :output-to     "target-cljs/public/main.js"
+                  :output-dir    "target/main.out"})
 (println "Building uberjar")
 (-> (read-project-clj) p/init-project uberjar)
