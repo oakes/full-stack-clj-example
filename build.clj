@@ -15,20 +15,20 @@
     (println "Unknown or missing task. Choose one of:" interposed)
     (System/exit 1)))
 
-(defmethod task "run"
+(defmethod task "dev"
   [_]
-  (task ["run-clj"])
-  (task ["run-cljs"]))
+  (task ["dev-clj"])
+  (task ["dev-cljs"]))
 
-(defmethod task "run-clj"
+(defmethod task "dev-clj"
   [_]
   (dev-main))
 
-(defmethod task "run-cljs"
+(defmethod task "dev-cljs"
   [_]
   (figwheel/-main "--build" "dev"))
 
-(defmethod task "build-cljs"
+(defmethod task "prod-cljs"
   [_]
   (api/build "src" {:main          'full-stack-clj-example.core
                     :optimizations :advanced
@@ -44,9 +44,9 @@
   (p/ensure-dynamic-classloader)
   (-> "project.clj" load-file var-get))
 
-(defmethod task "uberjar"
+(defmethod task "prod"
   [_]
-  (task ["build-cljs"])
+  (task ["prod-cljs"])
   (-> (read-project-clj) p/init-project uberjar))
 
 ;; entry point
