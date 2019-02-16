@@ -1,5 +1,6 @@
 classes/*
 target/*
+resources/public/main.js
 figwheel_server.log
 out/*
 .*
