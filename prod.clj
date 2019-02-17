@@ -36,7 +36,7 @@
 (api/build "src" {:main          'full-stack-clj-example.core
                   :optimizations :advanced
                   :output-to     "target-js/public/main.js"
-                  :output-dir    "target/main.out"})
+                  :output-dir    "target/public/main.out"})
 
 (println "Building uberjar")
 (uberjar project)
