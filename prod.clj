@@ -40,3 +40,4 @@
 
 (println "Building uberjar")
 (uberjar project)
+(System/exit 0)
