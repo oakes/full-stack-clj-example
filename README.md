@@ -6,10 +6,3 @@ This is a sample project that demonstrates how to create a full stack (Clojure +
 * Install [the Clojure CLI tool](https://clojure.org/guides/getting_started#_clojure_installer_and_cli_tools)
 * Develop with `clj -A:cljs:dev`
 * Build JAR file with `clj -A:cljs:prod`
-
-## Contents
-
-* `resources` The assets
-* `src/full_stack_clj_example/core.clj` The server-side code
-* `src/full_stack_clj_example/core.cljs` The client-side code
-* `src/full_stack_clj_example/utils.cljc` The client and server agnostic code

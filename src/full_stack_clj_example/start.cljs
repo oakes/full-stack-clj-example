@@ -1,4 +1,4 @@
-(ns full-stack-clj-example.core
+(ns full-stack-clj-example.start
   (:require [reagent.core :as r]))
 
 (defn content [state]

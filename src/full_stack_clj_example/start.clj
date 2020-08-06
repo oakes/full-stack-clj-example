@@ -1,6 +1,5 @@
-(ns full-stack-clj-example.core
+(ns full-stack-clj-example.start
   (:require [ring.adapter.jetty :refer [run-jetty]]
-            [ring.middleware.file :refer [wrap-file]]
             [ring.middleware.resource :refer [wrap-resource]]
             [ring.middleware.content-type :refer [wrap-content-type]]
             [ring.util.response :refer [not-found]]
@@ -24,12 +23,6 @@
 (defn run-server [handler-fn]
   (run-jetty (wrap-resource handler-fn "public") {:port port :join? false})
   (println (str "Started server on http://localhost:" port)))
-
-(defn dev-main []
-  (.mkdirs (io/file "target" "public"))
-  (-> handler
-      (wrap-file "target/public")
-      run-server))
 
 (defn -main [& args]
   (run-server handler))

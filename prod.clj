@@ -53,7 +53,7 @@
 
 (println "Building" out-file)
 (delete-children-recursively! (io/file out-dir))
-(api/build "src" {:main          'full-stack-clj-example.core
+(api/build "src" {:main          'full-stack-clj-example.start
                   :optimizations :advanced
                   :output-to     out-file
                   :output-dir    out-dir})
