@@ -1,2 +1,3 @@
 {:open-url "http://localhost:3000"
- :css-dirs ["resources/public"]}
+ :css-dirs ["resources/public"]
+ :clean-outputs true}
