@@ -8,9 +8,9 @@
 
 (def port 3000)
 
-(defmulti handler :uri)
+(defmulti handler (juxt :request-method :uri))
 
-(defmethod handler "/"
+(defmethod handler [:get "/"]
   [request]
   {:status 200
    :headers {"Content-Type" "text/html"}
