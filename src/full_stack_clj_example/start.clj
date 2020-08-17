@@ -21,7 +21,10 @@
   (not-found "Page not found"))
 
 (defn run-server [handler-fn]
-  (run-jetty (wrap-resource handler-fn "public") {:port port :join? false})
+  (run-jetty (-> handler-fn
+                 (wrap-resource "public")
+                 wrap-content-type)
+             {:port port :join? false})
   (println (str "Started server on http://localhost:" port)))
 
 (defn -main [& args]
