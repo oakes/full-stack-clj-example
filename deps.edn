@@ -1,8 +1,8 @@
 {:paths ["src" "resources"]
- :deps {ring {:mvn/version "1.8.1"}}
+ :deps {ring/ring {:mvn/version "1.8.1"}}
  :aliases {:cljs {:extra-deps {org.clojure/clojurescript {:mvn/version "1.10.764"}
-                               reagent {:mvn/version "0.8.1"}}}
+                               reagent/reagent {:mvn/version "0.8.1"}}}
            :dev {:extra-deps {com.bhauman/figwheel-main {:mvn/version "0.2.11"}}
                  :main-opts ["dev.clj"]}
-           :prod {:extra-deps {leiningen {:mvn/version "2.9.0"}}
+           :prod {:extra-deps {leiningen/leiningen {:mvn/version "2.9.0"}}
                   :main-opts ["prod.clj"]}}}
